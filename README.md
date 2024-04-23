@@ -9,4 +9,4 @@
 
 ### docker-preset
 	wget https://github.com/sodreamon/docker-preset/releases/download/v1.0.0/docker-preset -O /usr/bin/docker-preset &&\
-	chmod -x /usr/bin/docker-preset
+	chmod 755 /usr/bin/docker-preset

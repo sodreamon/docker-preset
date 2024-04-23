@@ -1,0 +1,31 @@
+presets:
+
+  preset1:
+    restart: always
+    environment:
+      - TZ=Asia/Seoul
+    env_file: .env
+    volumes:
+      - ./data/dbdata:/var/lib/mysql
+      - ./db:/docker-entrypoint-initdb.d
+    networks:
+      testnet:
+    add_hosts:
+      - test.test.com:172.26.0.50
+    deploy:
+      resources:
+        limits:
+          cpus: 1
+          memory: 1G
+        reservations:
+          cpus: 0.1
+          memory: 100M
+
+networks:
+  testnet:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.26.0.0/24
+        - gateway: 172.26.0.1

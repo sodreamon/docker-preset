@@ -6,12 +6,12 @@ presets:
       - TZ=Asia/Seoul
     env_file: .env
     volumes:
-      - ./data/dbdata:/var/lib/mysql
-      - ./db:/docker-entrypoint-initdb.d
+      - /home/user/data/dbdata:/var/lib/mysql
+      - /home/user/db:/docker-entrypoint-initdb.d
     networks:
-      testnet:
+      testnet
     add_hosts:
-      - test.test.com:172.26.0.50
+      - test.test.com:10.90.0.50
     deploy:
       resources:
         limits:
@@ -27,5 +27,5 @@ networks:
     ipam:
       driver: default
       config:
-        - subnet: 172.26.0.0/24
-        - gateway: 172.26.0.1
+        - subnet: 10.90.0.0/24
+        - gateway: 10.90.0.1

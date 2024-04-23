@@ -109,15 +109,15 @@ case $command in
 				gateway=""
 
 				# ipam.config 배열의 길이를 구합니다.
-				CONFIG_LENGTH=$(yq ".networks.${network}.ipam.config | length" deploy-set.yaml)
+				CONFIG_LENGTH=$(yq ".networks.${network}.ipam.config | length" $PRESET_YAML)
 
 				# 배열의 각 항목을 순회하며 subnet과 gateway를 찾습니다.
 				for ((i = 0 ; i < $CONFIG_LENGTH ; i++)); do
-				  KEY=$(yq ".networks.${network}.ipam.config[$i] | keys | .[]" deploy-set.yaml)
+				  KEY=$(yq ".networks.${network}.ipam.config[$i] | keys | .[]" $PRESET_YAML)
 				  if [[ "$KEY" == "subnet" ]]; then
-				    subnet=$(yq ".networks.${network}.ipam.config[$i].subnet" deploy-set.yaml)
+				    subnet=$(yq ".networks.${network}.ipam.config[$i].subnet" $PRESET_YAML)
 				  elif [[ "$KEY" == "gateway" ]]; then
-				    gateway=$(yq ".networks.${network}.ipam.config[$i].gateway" deploy-set.yaml)
+				    gateway=$(yq ".networks.${network}.ipam.config[$i].gateway" $PRESET_YAML)
 				  fi
 				done
 		        

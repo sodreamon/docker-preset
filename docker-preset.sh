@@ -41,7 +41,7 @@ case $command in
 		# extracting existing container's configurations
 		ADD_HOSTS_SECTION_EXISTS=$(yq ".presets.\"$PRESET\".add_hosts" $PRESET_YAML)
 		if [[ "$ADD_HOSTS_SECTION_EXISTS" != "null" && -n "$ADD_HOSTS_SECTION_EXISTS" ]]; then
-			ADD_HOST=$(yq ".presets.$PRESET.add_hosts[]" $PRESET_YAML | sed 's/^/--add-host /' | tr '\n' ' ')
+			ADD_HOSTS=$(yq ".presets.$PRESET.add_hosts[]" $PRESET_YAML | sed 's/^/--add-host /' | tr '\n' ' ')
 		fi
 
 		NET_SECTION_EXISTS=$(yq ".presets.\"$PRESET\".networks" $PRESET_YAML)

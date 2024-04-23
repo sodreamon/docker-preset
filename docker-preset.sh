@@ -74,6 +74,7 @@ case $command in
 		CMD+="$INTERACTIVE "
 		CMD+="$ADD_HOSTS "
 		CMD+="$NETWORKS "
+                CMD+="$CONTAINER_IP "
 		CMD+="$VOLUMES "
 		CMD+="$ENV_VARS "
 		CMD+="$RESTART_POLICY "
